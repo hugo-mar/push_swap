@@ -6,7 +6,7 @@
 /*   By: hugo-mar <hugo-mar@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:06:53 by hugo-mar          #+#    #+#             */
-/*   Updated: 2024/08/27 17:48:05 by hugo-mar         ###   ########.fr       */
+/*   Updated: 2024/10/08 18:33:14 by hugo-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "get_next_line.h"
 
 typedef struct s_stack_node
 {
@@ -30,11 +31,20 @@ typedef struct s_stack_node
 	struct s_stack_node	*next;
 }			t_stack_node;
 
+typedef struct s_command_data
+{
+	t_stack_node	**a;
+	t_stack_node	**b;
+	int				argc;
+	char			**argv;
+}			t_command_data;
+
 // Stack initiation
 char			**ft_split(char const *s, char c);
 void			append_node(t_stack_node **stack, int value);
 void			create_stack(t_stack_node **a, char **argv);
 long			ft_atol(char *str);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
 
 // Handle errors
 void			error_exit(t_stack_node **a, char **argv);
@@ -72,5 +82,11 @@ void			tiny_sort(t_stack_node **stack);
 void			send_to_b(t_stack_node **a, t_stack_node **b);
 void			send_to_a(t_stack_node **b, t_stack_node **a);
 void			turk_sort(t_stack_node **a,	t_stack_node **b);
+
+//***Checker
+void			push_no_print(t_stack_node **src, t_stack_node **dst);
+void			swap_both_no_print(t_stack_node **a, t_stack_node **b);
+void			rotate_both_no_print(t_stack_node **a, t_stack_node **b);
+void			rev_rotate_both_no_print(t_stack_node **a, t_stack_node **b);
 
 #endif
